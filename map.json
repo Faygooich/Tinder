@@ -9,8 +9,8 @@
       "id": 1,
       "name": "сцена 1",
       "spawnPoint": {
-        "x": 320,
-        "y": 160
+        "x": 576,
+        "y": 32
       },
       "objects": [
         {
@@ -179,7 +179,7 @@
           "h": 128,
           "color": "#33aaff",
           "opacity": 0.7,
-          "z": 14,
+          "z": -1,
           "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAwCAYAAAChS3wfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAj0lEQVRoge3QQQ2AQADEQEAAaAL/Zg4D4OC+Q0L73WzSdL3O61kmjHvM5uXYj+n+9f82XX9AAbSApgBaQFMALaApgBbQFEALaAqgBTQF0AKaAmgBTQG0gKYAWkBTAC2gKYAW0BRAC2gKoAU0BdACmgJoAU0BtICmAFpAUwAtoCmAFtAUQAtoCqAFNAXQApoXZRAN+P4ch6IAAAAASUVORK5CYII="
         },
         {
@@ -192,7 +192,7 @@
           "h": 128,
           "color": "#33aaff",
           "opacity": 0.7,
-          "z": 17,
+          "z": 0,
           "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAwCAYAAAChS3wfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAoUlEQVRoge3QoQpCYRAF4estIl5+EAyCyeL7P6J9g8XwBWfa2bLDnLYfWWu9x+k19nPsx9j3sW/zxdjH2NexL2Ofv+19+3MKoAU0BdACmgJoAU0BtICmAFpAUwAtoCmAFtAUQAtoCqAFNAXQApoCaAFNAbSApgBaQFMALaApgBbQFEALaAqgBTQF0AKaAmgBTQG0gKYAWkBTAC2gKYAW0HwA5fcBZTIpsOAAAAAASUVORK5CYII="
         },
         {
@@ -254,7 +254,7 @@
           "x": 1024,
           "y": 288,
           "w": 256,
-          "h": 32,
+          "h": 64,
           "color": "#ff3333",
           "opacity": 0.3,
           "z": 10,
