@@ -327,7 +327,7 @@
     /* ── MOVEMENT (blocked during out-phase) ── */
     let dx = 0, dy = 0;
     if (fadePhase !== 'out') {
-      if (keys['ArrowLeft']  || keys['a'] || keys['A']) { dx -= 1; facingLeft = true; }
+      if (keys['ArrowLeft']  || keys['a'] || keys['A']) { dx -= 1; facingLeft = false; }
       if (keys['ArrowRight'] || keys['d'] || keys['D']) { dx += 1; facingLeft = false; }
       if (keys['ArrowUp']    || keys['w'] || keys['W']) dy -= 1;
       if (keys['ArrowDown']  || keys['s'] || keys['S']) dy += 1;
