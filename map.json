@@ -429,6 +429,38 @@
           "z": 5,
           "texture": null,
           "targetSceneId": 2
+        },
+        {
+          "id": 49,
+          "type": "lock",
+          "name": "lock_49",
+          "x": 1024,
+          "y": 416,
+          "w": 32,
+          "h": 128,
+          "color": "#ff6600",
+          "opacity": 0.35,
+          "z": 1,
+          "texture": null,
+          "requiredKeyTag": "key1",
+          "requiredCount": 1,
+          "unlockText": "Открыто!",
+          "lockedText": "Заперто."
+        },
+        {
+          "id": 50,
+          "type": "key",
+          "name": "key_50",
+          "x": 480,
+          "y": 576,
+          "w": 64,
+          "h": 64,
+          "color": "#00ff88",
+          "opacity": 0.45,
+          "z": 1,
+          "texture": null,
+          "keyTag": "key1",
+          "pickupText": "Подобрать?"
         }
       ]
     },
