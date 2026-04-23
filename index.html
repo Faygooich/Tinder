@@ -212,6 +212,7 @@
   const keyHud      = document.getElementById('key-hud');
 
   let dlg = null;
+  let dlgLocked = false;
   // null | { text, shown, charIdx, charTimer, done, choices, choiceIdx, onClose }
   const CHAR_DELAY = 0.038;  // seconds per char
 
@@ -256,6 +257,7 @@
   }
 
   function closeDialog() {
+    if (dlgLocked) return;
     if (dlg?.onClose) dlg.onClose();
     dlg = null;
     dlgBox.style.display = 'none';
@@ -314,7 +316,7 @@
      INTERACTION SYSTEM
   ───────────────────────────────────── */
   const INTERACT_EXTRA = 20;  // extra px range beyond hitbox
-  const INTERACT_TYPES = new Set(['interaction', 'key', 'lock']);
+  const INTERACT_TYPES = new Set(['interaction', 'key', 'lock', 'lock_jumpscare']);
 
   function findNearInteractable() {
     const scene = currentScene(); if (!scene) return null;
@@ -359,6 +361,21 @@
         openTextDialog(obj.unlockText || 'Открыто!', () => {
           if (sc) sc.objects = sc.objects.filter(o => o.id !== obj.id);
         });
+      } else {
+        openTextDialog(obj.lockedText || 'Заперто.');
+      }
+
+    } else if (obj.type === 'lock_jumpscare') {
+      const tag  = obj.requiredKeyTag || 'ключ';
+      const need = Math.max(1, obj.requiredCount || 1);
+      if ((inventory[tag] || 0) >= need) {
+        inventory[tag] -= need;
+        updateKeyHUD();
+        const sc = currentScene();
+        if (sc) sc.objects = sc.objects.filter(o => o.id !== obj.id);
+        openTextDialog(obj.unlockText || 'Открыто!');
+        dlgLocked = true;
+        runJumpscareSequence();
       } else {
         openTextDialog(obj.lockedText || 'Заперто.');
       }
@@ -473,7 +490,7 @@
 
   function resolveCollisions(nx, ny, cx, cy) {
     const scene = currentScene();
-    const colliders = (scene?.objects || []).filter(o => o.type === 'collider' || o.type === 'lock');
+    const colliders = (scene?.objects || []).filter(o => o.type === 'collider' || o.type === 'lock' || o.type === 'lock_jumpscare');
     let rx = nx, ry = ny;
     for (const c of colliders) {
       if (rectsOverlap(playerHitbox(rx, cy), c)) rx = cx;
@@ -507,7 +524,8 @@
     portal:      '#aa44ff',
     interaction: '#ffaa00',
     key:         '#00ff88',
-    lock:        '#ff6600'
+    lock:        '#ff6600',
+    lock_jumpscare: '#ff6600'
   };
 
   function hexToRgba(hex, a) {
@@ -662,6 +680,91 @@
     drawScanlines();
     requestAnimationFrame(gameLoop);
   }
+  /* ─────────────────────────────────────
+     JUMPSCARE SEQUENCE
+  ───────────────────────────────────── */
+  let _stopGlitch = null;
+
+  function _startGlitchSound() {
+    let active = true;
+    let nodes = [];
+    function fire() {
+      if (!active) return;
+      const a = new Audio('sym_00.mp3');
+      a.volume = 1.0;
+      a.play().catch(() => {});
+      nodes.push(a);
+      // rapid re-fire: 20-70ms — creates that stuttering corrupt-error feel
+      setTimeout(fire, 20 + Math.random() * 50);
+    }
+    fire();
+    return function stop() {
+      active = false;
+      nodes.forEach(n => { try { n.pause(); n.currentTime = 0; } catch(_){} });
+      nodes = [];
+    };
+  }
+
+  function _setScreen(color, opacity) {
+    fadeEl.style.background = color;
+    setFadeOverlay(opacity);
+  }
+
+  function runJumpscareSequence() {
+    // ensure overlay starts transparent (game still visible + dialog on top)
+    _setScreen('#000', 0);
+
+    setTimeout(() => {
+      // ── черный 2с ──
+      _setScreen('#000', 1);
+
+      setTimeout(() => {
+        // ── белый 0.5с + глитч-звук ──
+        _setScreen('#fff', 1);
+        _stopGlitch = _startGlitchSound();
+
+        setTimeout(() => {
+          // ── черный 2с + тишина ──
+          _setScreen('#000', 1);
+          if (_stopGlitch) { _stopGlitch(); _stopGlitch = null; }
+
+          setTimeout(() => {
+            // ── белый + звук (0.5с) ──
+            _setScreen('#fff', 1);
+            _stopGlitch = _startGlitchSound();
+
+            setTimeout(() => {
+              // ── черный 4с + тишина ──
+              _setScreen('#000', 1);
+              if (_stopGlitch) { _stopGlitch(); _stopGlitch = null; }
+
+              setTimeout(() => {
+                // ── СКРИМЕР: fullscreen snake.png, без звуков ──
+                _setScreen('#000', 0);
+                const scare = document.createElement('img');
+                scare.src = 'snake.png';
+                scare.style.cssText = [
+                  'position:fixed', 'top:0', 'left:0',
+                  'width:100vw', 'height:100vh',
+                  'object-fit:cover', 'z-index:9999',
+                  'pointer-events:none'
+                ].join(';');
+                document.body.appendChild(scare);
+                // закрываем диалог
+                dlgLocked = false;
+                dlg = null;
+                dlgBox.style.display = 'none';
+              }, 4000);
+
+            }, 500);   // длительность второго белого
+          }, 2000);    // черный 2с
+
+        }, 500);       // первый белый 0.5с
+      }, 2000);        // черный 2с
+
+    }, 6000);          // ждём 6с после открытия
+  }
+
   </script>
 </body>
 </html>
