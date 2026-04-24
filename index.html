@@ -66,7 +66,7 @@
       pointer-events:none; z-index:12; display:none;
       transform:translateX(-50%);
     }
-
+	П = ⌖
     /* ── KEY HUD ── */
     #key-hud{
       position:absolute; top:16px; right:16px;
@@ -87,7 +87,7 @@
 	  pointer-events: none;
 	  animation: bh 1.4s ease-in-out infinite;
 	}
-
+	Р = ⌗
 	@keyframes bh {
 	  50% { opacity: .06; }
 	}
@@ -140,6 +140,7 @@
   let fadePhase    = 'idle';
   let fadeAlpha    = 0;
   let pendingScene = null;
+  let pendingArrivalId = null;
   let portalCooldown = 0;
   const FADE_SPEED = 4.5;
 
@@ -153,14 +154,26 @@
     }
   }
 
-  function activateScene(sceneId, fromPortal) {
+  function activateScene(sceneId, fromPortal, arrivalId) {
     const scene = scenes.find(s => s.id === sceneId);
     if (!scene) return;
     currentSceneId = sceneId;
     preloadScene(scene);
-    const sp = scene.spawnPoint || { x:640, y:360 };
-    px = sp.x - (SPRITE_W * SCALE) / 2;
-    py = sp.y - (SPRITE_H * SCALE) / 2;
+    // If an arrivalId is specified, place player at the center of that object
+    let placed = false;
+    if (arrivalId != null) {
+      const arr = (scene.objects || []).find(o => o.id === arrivalId);
+      if (arr) {
+        px = arr.x + arr.w / 2 - (SPRITE_W * SCALE) / 2;
+        py = arr.y + arr.h / 2 - (SPRITE_H * SCALE) / 2;
+        placed = true;
+      }
+    }
+    if (!placed) {
+      const sp = scene.spawnPoint || { x:640, y:360 };
+      px = sp.x - (SPRITE_W * SCALE) / 2;
+      py = sp.y - (SPRITE_H * SCALE) / 2;
+    }
     if (fromPortal) portalCooldown = 1.2;
   }
 
@@ -535,6 +548,7 @@
     for (const p of portals) {
       if (rectsOverlap(hb, p)) {
         pendingScene = p.targetSceneId;
+        pendingArrivalId = p.arrivalId ?? null;
         fadePhase = 'out'; fadeAlpha = 0;
         return;
       }
@@ -643,7 +657,7 @@
     if (fadePhase === 'out') {
       fadeAlpha = Math.min(1, fadeAlpha + dt * FADE_SPEED);
       setFadeOverlay(fadeAlpha);
-      if (fadeAlpha >= 1) { activateScene(pendingScene, true); fadePhase = 'in'; }
+      if (fadeAlpha >= 1) { activateScene(pendingScene, true, pendingArrivalId); fadePhase = 'in'; }
     } else if (fadePhase === 'in') {
       fadeAlpha = Math.max(0, fadeAlpha - dt * FADE_SPEED);
       setFadeOverlay(fadeAlpha);
@@ -705,7 +719,6 @@
     requestAnimationFrame(gameLoop);
   }
   /* ─────────────────────────────────────
-     JUMPSCARE SEQUENCE
   ───────────────────────────────────── */
   let _stopGlitch = null;
 

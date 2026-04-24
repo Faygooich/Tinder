@@ -119,6 +119,7 @@
     .type-tag.key         { border-color:var(--keyc);   color:var(--keyc);   }
     .type-tag.lock        { border-color:var(--lockc);  color:var(--lockc);  }
     .type-tag.lock-screamer{ border-color:var(--locksc); color:var(--locksc); }
+    .type-tag.arrival      { border-color:#cc88ff;      color:#cc88ff;      }
 
     .act-btn{
       width:100%; padding:7px 0; background:transparent; border:1px solid var(--border);
@@ -232,6 +233,13 @@
       <path d="M8 2L9.8 6.2L14 7L10.7 10.2L11.6 14.5L8 12.5L4.4 14.5L5.3 10.2L2 7L6.2 6.2Z" stroke="currentColor" stroke-width="1.1" fill="none"/>
     </svg>
   </button>
+  <!-- ARRIVAL -->
+  <button class="tool-btn" id="btn-arrival" title="точка прибытия [R]">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <circle cx="8" cy="8" r="5" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 2"/>
+      <path d="M6 8h4M8 6l2 2-2 2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
   <!-- MOVE -->
   <button class="tool-btn" id="btn-move" title="рука [H]">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 2v7M6 2c0-1 1.5-1 1.5 0v5M7.5 7V3c0-1 1.5-1 1.5 0v4M9 7V4c0-1 1.5-1 1.5 0v5M4.5 8V5c0-1-1.5-1-1.5 0v4c0 3 4 5 6 3" stroke="currentColor" stroke-width="1.1"/></svg>
@@ -283,7 +291,7 @@
     <span id="zoom-display">100%</span>
     <span id="count-display">0 объектов</span>
   </div>
-  <div id="hint">v·c·p·o·i·k·l·s·h — инструменты · ctrl+c/v — копировать/вставить · ctrl+s — сохранить</div>
+  <div id="hint">v·c·p·o·i·k·l·s·r·h — инструменты · ctrl+c/v — копировать/вставить · ctrl+s — сохранить</div>
   <div id="save-flash">map.json сохранён</div>
   <div id="clipboard-flash">скопировано</div>
 </div>
@@ -333,6 +341,9 @@
       <div id="portal-section" style="display:none; margin-top:6px;">
         <div class="panel-title" style="margin-bottom:6px;">переход в сцену</div>
         <select class="prop-input" id="p-target-scene" style="cursor:pointer;"></select>
+        <div class="panel-title" style="margin-bottom:4px; margin-top:8px; color:var(--purple);">точка прибытия</div>
+        <select class="prop-input" id="p-arrival-id" style="cursor:pointer;"></select>
+        <div style="font-size:8px;letter-spacing:1px;color:var(--text-dim);margin-top:3px;">объект типа «arrival» в целевой сцене</div>
       </div>
 
       <!-- Texture (object only) -->
@@ -651,7 +662,24 @@ function drawObj(obj, selected) {
     }
   }
 
-  if (selected) {
+  } else if (obj.type === 'arrival') {
+    const dispAlpha = Math.max(alpha, 0.18);
+    ctx.fillStyle=hexToRgba('#cc88ff',dispAlpha); ctx.fillRect(sx,sy,sw,sh);
+    ctx.strokeStyle=selected?'#c8ff00':'#cc88ff'; ctx.lineWidth=selected?1.5:1;
+    ctx.setLineDash([3,3]); ctx.strokeRect(sx+.5,sy+.5,sw-1,sh-1); ctx.setLineDash([]);
+    // draw inward arrow
+    const cx2=sx+sw/2, cy2=sy+sh/2;
+    const ar=Math.min(sw,sh)*0.22;
+    ctx.strokeStyle='#cc88ff'; ctx.lineWidth=1.2;
+    ctx.beginPath(); ctx.moveTo(cx2-ar,cy2); ctx.lineTo(cx2+ar,cy2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx2+ar*.45,cy2-ar*.45); ctx.lineTo(cx2+ar,cy2); ctx.lineTo(cx2+ar*.45,cy2+ar*.45); ctx.stroke();
+    if (zoom>0.25&&sw>22) {
+      ctx.fillStyle='#cc88ff'; ctx.font=`${Math.max(8,9*zoom)}px monospace`;
+      ctx.globalAlpha=0.9;
+      ctx.fillText('⊕ '+(obj.name||'arrival'), sx+3, sy+11);
+      ctx.globalAlpha=1;
+    }
+  }
     ctx.strokeStyle='#c8ff00'; ctx.lineWidth=1;
     ctx.strokeRect(sx-1,sy-1,sw+2,sh+2);
     for (const h of getHandles(obj)) {
@@ -746,7 +774,7 @@ canvas.addEventListener('mousedown', e => {
     updateProps(); updateLayers(); render(); return;
   }
 
-  const drawTypes = ['collider','portal','object','interaction','key','lock'];
+  const drawTypes = ['collider','portal','object','interaction','key','lock','arrival'];
   if (drawTypes.includes(tool)) {
     drawing=true;
     drawStart={x:snap(wp.x),y:snap(wp.y)};
@@ -806,6 +834,7 @@ canvas.addEventListener('mouseup', () => {
         interaction: {color:'#ffaa00', opacity:0.22, z:1 },
         key:         {color:'#00ff88', opacity:0.45, z:1 },
         lock:        {color:'#ff6600', opacity:0.35, z:1 },
+        arrival:     {color:'#cc88ff', opacity:0.25, z:1 },
       };
       const d = defaults[tool]||defaults.object;
       const obj = {
@@ -814,7 +843,7 @@ canvas.addEventListener('mouseup', () => {
         x:rx,y:ry,w:rw,h:rh,
         color:d.color, opacity:d.opacity, z:d.z,
         texture:null,
-        ...(tool==='portal'      ? {targetSceneId:null} : {}),
+        ...(tool==='portal'      ? {targetSceneId:null, arrivalId:null} : {}),
         ...(tool==='interaction' ? {dialogText:''}      : {}),
         ...(tool==='key'         ? {keyTag:'ключ', pickupText:'Подобрать?'} : {}),
         ...(tool==='lock'        ? {requiredKeyTag:'ключ', requiredCount:1, lockType:'normal', unlockText:'Открыто!', lockedText:'Заперто.'} : {})
@@ -878,6 +907,7 @@ window.addEventListener('keydown', e => {
   if(k==='k'||k==='K') setTool('key');
   if(k==='l'||k==='L') setTool('lock');
   if(k==='s'||k==='S') setTool('spawn');
+  if(k==='r'||k==='R') setTool('arrival');
   if(k==='h'||k==='H') setTool('move');
   if(k==='f'||k==='F') fitWorld();
   if(k==='+'||k==='='){zoom=Math.min(8,zoom*1.2);render();}
@@ -912,14 +942,14 @@ function setTool(t) {
   const map={
     select:'btn-select', collider:'btn-collider', portal:'btn-portal',
     object:'btn-object', spawn:'btn-spawn', move:'btn-move',
-    interaction:'btn-interaction', key:'btn-key', lock:'btn-lock'
+    interaction:'btn-interaction', key:'btn-key', lock:'btn-lock', arrival:'btn-arrival'
   };
   if(map[t]) document.getElementById(map[t]).classList.add('active');
-  const c={select:'default',move:'grab',spawn:'cell'};
+  const c={select:'default',move:'grab',spawn:'cell',arrival:'cell'};
   canvas.style.cursor=c[t]||'crosshair';
   render();
 }
-['select','collider','portal','object','spawn','move','interaction','key','lock'].forEach(t=>
+['select','collider','portal','object','spawn','move','interaction','key','lock','arrival'].forEach(t=>
   document.getElementById('btn-'+t).addEventListener('click',()=>setTool(t))
 );
 document.getElementById('btn-zoom-in').addEventListener('click',()=>{zoom=Math.min(8,zoom*1.3);render();});
@@ -1047,6 +1077,8 @@ function updateProps() {
       if(sc.id===sel.targetSceneId) opt.selected=true;
       sel2.appendChild(opt);
     }
+    // Populate arrival points from target scene
+    _refreshArrivalSelect(sel);
   }
   if (sel.type==='interaction') {
     document.getElementById('p-dialog-text').value = sel.dialogText||'';
@@ -1067,6 +1099,30 @@ function updateProps() {
 document.getElementById('p-target-scene').addEventListener('change',function(){
   const sel=getObjs().find(o=>o.id===selectedId); if(!sel) return;
   sel.targetSceneId=this.value?parseInt(this.value):null;
+  sel.arrivalId=null; // reset arrival when target changes
+  _refreshArrivalSelect(sel);
+  render();
+});
+
+function _refreshArrivalSelect(portalObj) {
+  const arrSel = document.getElementById('p-arrival-id');
+  arrSel.innerHTML = '<option value="">— спавн сцены (по умолчанию) —</option>';
+  if (!portalObj.targetSceneId) return;
+  const targetScene = scenes.find(s=>s.id===portalObj.targetSceneId);
+  if (!targetScene) return;
+  for (const o of (targetScene.objects||[])) {
+    if (o.type !== 'arrival') continue;
+    const opt = document.createElement('option');
+    opt.value = o.id;
+    opt.textContent = o.name || ('arrival_'+o.id);
+    if (o.id === portalObj.arrivalId) opt.selected = true;
+    arrSel.appendChild(opt);
+  }
+}
+
+document.getElementById('p-arrival-id').addEventListener('change', function(){
+  const sel=getObjs().find(o=>o.id===selectedId); if(!sel) return;
+  sel.arrivalId = this.value ? parseInt(this.value) : null;
   render();
 });
 
@@ -1148,11 +1204,11 @@ function updateLayers(){
   const sorted=[...getObjs()].sort((a,b)=>(b.z||0)-(a.z||0));
   const typeColors = {
     collider:'#ff3333', portal:'#aa44ff', object:null,
-    interaction:'#ffaa00', key:'#00ff88', lock:'#ff6600'
+    interaction:'#ffaa00', key:'#00ff88', lock:'#ff6600', arrival:'#cc88ff'
   };
   const typeLabels = {
     collider:'col', portal:'prt', object:'obj',
-    interaction:'int', key:'key', lock:'lck'
+    interaction:'int', key:'key', lock:'lck', arrival:'arr'
   };
   for(const obj of sorted){
     const div=document.createElement('div');
@@ -1203,7 +1259,7 @@ function buildMapData(){
         x:Math.round(o.x), y:Math.round(o.y), w:Math.round(o.w), h:Math.round(o.h),
         color:o.color, opacity:o.opacity, z:o.z||0,
         texture:o.texture||null,
-        ...(o.type==='portal'       ? {targetSceneId:o.targetSceneId||null}  : {}),
+        ...(o.type==='portal'       ? {targetSceneId:o.targetSceneId||null, arrivalId:o.arrivalId||null}  : {}),
         ...(o.type==='interaction'  ? {dialogText:o.dialogText||''}          : {}),
         ...(o.type==='key'          ? {keyTag:o.keyTag||'ключ', pickupText:o.pickupText||'Подобрать?'} : {}),
         ...(o.type==='lock'         ? {
