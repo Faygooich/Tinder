@@ -825,7 +825,7 @@
           "name": "object_161",
           "x": 124,
           "y": 388,
-          "w": 1468,
+          "w": 1572,
           "h": 172,
           "color": "#000000",
           "opacity": 1,
@@ -838,7 +838,7 @@
           "name": "collider_162",
           "x": 96,
           "y": 388,
-          "w": 1448,
+          "w": 1596,
           "h": 36,
           "color": "#ff3333",
           "opacity": 0.3,
@@ -851,7 +851,7 @@
           "name": "collider_163",
           "x": 100,
           "y": 268,
-          "w": 1448,
+          "w": 1576,
           "h": 36,
           "color": "#ff3333",
           "opacity": 0.3,
@@ -875,7 +875,7 @@
           "id": 165,
           "type": "portal",
           "name": "portal_165",
-          "x": 1512,
+          "x": 1640,
           "y": 304,
           "w": 32,
           "h": 84,
@@ -950,6 +950,58 @@
           "opacity": 0.7,
           "z": -1,
           "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        },
+        {
+          "id": 172,
+          "type": "object",
+          "name": "object_14_copy_copy_copy_copy_copy_copy_copy_copy_copy_copy",
+          "x": 1532,
+          "y": 340,
+          "w": 128,
+          "h": 192,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": -1,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        },
+        {
+          "id": 176,
+          "type": "object",
+          "name": "object_38_copy",
+          "x": 544,
+          "y": 164,
+          "w": 1552,
+          "h": 384,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": 19,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAwCAYAAAChS3wfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAm0lEQVRoge3QoQrCABgA4c0yhjIYGASTxfd/RPsfLIYveNeuHbcuv/Me/hr+HP4Yfh9+Dj+G34Zfh+/Dt29+Wf6cBugATQN0gKYBOkDTAB2gaYAO0DRAB2gaoAM0DdABmgboAE0DdICmATpA0wAdoGmADtA0QAdoGqADNA3QAZoG6ABNA3SApgE6QNMAHaBpgA7QNEAHaBqgAzQfCIIBO8dbjx4AAAAASUVORK5CYII="
+        },
+        {
+          "id": 177,
+          "type": "object",
+          "name": "object_38_copy_copy",
+          "x": 164,
+          "y": 164,
+          "w": 1552,
+          "h": 384,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": 19,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAwCAYAAAChS3wfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAm0lEQVRoge3QoQrCABgA4c0yhjIYGASTxfd/RPsfLIYveNeuHbcuv/Me/hr+HP4Yfh9+Dj+G34Zfh+/Dt29+Wf6cBugATQN0gKYBOkDTAB2gaYAO0DRAB2gaoAM0DdABmgboAE0DdICmATpA0wAdoGmADtA0QAdoGqADNA3QAZoG6ABNA3SApgE6QNMAHaBpgA7QNEAHaBqgAzQfCIIBO8dbjx4AAAAASUVORK5CYII="
+        },
+        {
+          "id": 178,
+          "type": "object",
+          "name": "object_38_copy_copy",
+          "x": 124,
+          "y": 156,
+          "w": 1552,
+          "h": 384,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": 19,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAwCAYAAAChS3wfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAm0lEQVRoge3QoQrCABgA4c0yhjIYGASTxfd/RPsfLIYveNeuHbcuv/Me/hr+HP4Yfh9+Dj+G34Zfh+/Dt29+Wf6cBugATQN0gKYBOkDTAB2gaYAO0DRAB2gaoAM0DdABmgboAE0DdICmATpA0wAdoGmADtA0QAdoGqADNA3QAZoG6ABNA3SApgE6QNMAHaBpgA7QNEAHaBqgAzQfCIIBO8dbjx4AAAAASUVORK5CYII="
         }
       ]
     },
@@ -1785,10 +1837,92 @@
       "id": 6,
       "name": "темнота",
       "spawnPoint": {
-        "x": 672,
-        "y": 380
+        "x": 152,
+        "y": 300
       },
-      "objects": []
+      "objects": [
+        {
+          "id": 173,
+          "type": "portal",
+          "name": "portal_173",
+          "x": 93,
+          "y": 240,
+          "w": 24,
+          "h": 156,
+          "color": "#aa44ff",
+          "opacity": 0,
+          "z": 5,
+          "texture": null,
+          "targetSceneId": null
+        },
+        {
+          "id": 174,
+          "type": "collider",
+          "name": "collider_174",
+          "x": 88,
+          "y": 216,
+          "w": 972,
+          "h": 40,
+          "color": "#ff3333",
+          "opacity": 0.3,
+          "z": 10,
+          "texture": null
+        },
+        {
+          "id": 175,
+          "type": "collider",
+          "name": "collider_175",
+          "x": 68,
+          "y": 360,
+          "w": 992,
+          "h": 72,
+          "color": "#ff3333",
+          "opacity": 0.3,
+          "z": 10,
+          "texture": null
+        },
+        {
+          "id": 179,
+          "type": "object",
+          "name": "object_179",
+          "x": -64,
+          "y": -104,
+          "w": 1484,
+          "h": 860,
+          "color": "#000000",
+          "opacity": 0.75,
+          "z": 55,
+          "texture": null
+        },
+        {
+          "id": 180,
+          "type": "collider",
+          "name": "collider_180",
+          "x": 1016,
+          "y": 240,
+          "w": 80,
+          "h": 132,
+          "color": "#ff3333",
+          "opacity": 0.3,
+          "z": 10,
+          "texture": null
+        },
+        {
+          "id": 182,
+          "type": "key",
+          "name": "key_182",
+          "x": 928,
+          "y": 286,
+          "w": 44,
+          "h": 44,
+          "color": "#f85507",
+          "opacity": 0,
+          "z": 1,
+          "texture": null,
+          "keyTag": "Холодный Ключ",
+          "pickupText": "Пробираясь сквозь тьму, вы нащупываете странный объект, напоминающий стол и излучающий тепло. На нем лежит Холодный Ключ. Подобрать?"
+        }
+      ]
     }
   ]
 }
