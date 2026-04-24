@@ -716,6 +716,20 @@
           "opacity": 0.3,
           "z": 10,
           "texture": null
+        },
+        {
+          "id": 151,
+          "type": "interaction",
+          "name": "interaction_151",
+          "x": 564,
+          "y": 92,
+          "w": 36,
+          "h": 52,
+          "color": "#ffaa00",
+          "opacity": 0.22,
+          "z": 1,
+          "texture": null,
+          "dialogText": "Загадочный монумент, стоя на котором вы появились в этой комнате. На его верхушке нарисован ромб."
         }
       ]
     },
@@ -890,8 +904,8 @@
           "w": 16,
           "h": 12,
           "color": "#00ff88",
-          "opacity": 0.45,
-          "z": 1,
+          "opacity": 0,
+          "z": -10,
           "texture": null,
           "keyTag": "Простой Ключ",
           "pickupText": "Треснутая плитка. Вы приподнимаете ее и видите что-то блестящее. Подобрать?"
@@ -1059,7 +1073,7 @@
           "name": "object_110_copy",
           "x": 552,
           "y": 152,
-          "w": 128,
+          "w": 64,
           "h": 144,
           "color": "#000000",
           "opacity": 1,
@@ -1358,8 +1372,8 @@
           "name": "collider_136",
           "x": 488,
           "y": 152,
-          "w": 192,
-          "h": 144,
+          "w": 128,
+          "h": 108,
           "color": "#ff3333",
           "opacity": 0.3,
           "z": 10,
@@ -1409,7 +1423,7 @@
           "type": "portal",
           "name": "portal_140",
           "x": 680,
-          "y": 0,
+          "y": 52,
           "w": 64,
           "h": 28,
           "color": "#aa44ff",
@@ -1417,19 +1431,6 @@
           "z": 5,
           "texture": null,
           "targetSceneId": 5
-        },
-        {
-          "id": 150,
-          "type": "object",
-          "name": "object_150",
-          "x": 680,
-          "y": 88,
-          "w": 64,
-          "h": 104,
-          "color": "#33aaff",
-          "opacity": 1,
-          "z": 0,
-          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAABACAYAAABcIPRGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAm0lEQVRoge3TsQlCARAE0VGu/wYNjAQD4cNHETOL2GA5mFfBDsddgBuLXdsDUga0DfBrj0isv4ABbf5AmwFtA3zbIxLrL2BA2wCf9ojE+gsY0DbAuz0isf4CBrQNcLZHJNZfwIC2AY72iMT6CxjQNsCrPSKx/gIGtA3wbI9IrL+AAW0DPNojEusvYEDbAPf2iMT6CxggSZIkSS1/5mgLnB4HTuIAAAAASUVORK5CYII="
         }
       ]
     },
