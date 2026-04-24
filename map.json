@@ -737,10 +737,195 @@
       "id": 2,
       "name": "сцена 2",
       "spawnPoint": {
-        "x": 640,
+        "x": 184,
         "y": 360
       },
-      "objects": []
+      "objects": [
+        {
+          "id": 154,
+          "type": "object",
+          "name": "object_14_copy_copy_copy_copy_copy",
+          "x": 252,
+          "y": 340,
+          "w": 128,
+          "h": 192,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": -1,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        },
+        {
+          "id": 155,
+          "type": "object",
+          "name": "object_14_copy_copy_copy_copy_copy_copy",
+          "x": 380,
+          "y": 340,
+          "w": 128,
+          "h": 192,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": -1,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        },
+        {
+          "id": 156,
+          "type": "object",
+          "name": "object_14_copy_copy_copy_copy_copy_copy",
+          "x": 508,
+          "y": 340,
+          "w": 128,
+          "h": 192,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": -1,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        },
+        {
+          "id": 157,
+          "type": "object",
+          "name": "object_14_copy_copy_copy_copy_copy_copy",
+          "x": 636,
+          "y": 340,
+          "w": 128,
+          "h": 192,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": -1,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        },
+        {
+          "id": 158,
+          "type": "object",
+          "name": "object_14_copy_copy_copy_copy_copy_copy",
+          "x": 764,
+          "y": 340,
+          "w": 128,
+          "h": 192,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": -1,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        },
+        {
+          "id": 159,
+          "type": "object",
+          "name": "object_14_copy_copy_copy_copy_copy_copy",
+          "x": 1020,
+          "y": 340,
+          "w": 128,
+          "h": 192,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": -1,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        },
+        {
+          "id": 161,
+          "type": "object",
+          "name": "object_161",
+          "x": 124,
+          "y": 388,
+          "w": 1232,
+          "h": 172,
+          "color": "#000000",
+          "opacity": 1,
+          "z": 0,
+          "texture": null
+        },
+        {
+          "id": 162,
+          "type": "collider",
+          "name": "collider_162",
+          "x": 96,
+          "y": 388,
+          "w": 1264,
+          "h": 36,
+          "color": "#ff3333",
+          "opacity": 0.3,
+          "z": 10,
+          "texture": null
+        },
+        {
+          "id": 163,
+          "type": "collider",
+          "name": "collider_163",
+          "x": 100,
+          "y": 268,
+          "w": 1228,
+          "h": 36,
+          "color": "#ff3333",
+          "opacity": 0.3,
+          "z": 10,
+          "texture": null
+        },
+        {
+          "id": 164,
+          "type": "object",
+          "name": "object_14_copy_copy_copy_copy_copy_copy",
+          "x": 124,
+          "y": 340,
+          "w": 128,
+          "h": 192,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": -1,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        },
+        {
+          "id": 165,
+          "type": "portal",
+          "name": "portal_165",
+          "x": 1256,
+          "y": 304,
+          "w": 32,
+          "h": 84,
+          "color": "#aa44ff",
+          "opacity": 0,
+          "z": 5,
+          "texture": null,
+          "targetSceneId": 6
+        },
+        {
+          "id": 166,
+          "type": "portal",
+          "name": "portal_165_copy",
+          "x": 108,
+          "y": 304,
+          "w": 32,
+          "h": 84,
+          "color": "#aa44ff",
+          "opacity": 0,
+          "z": 5,
+          "texture": null,
+          "targetSceneId": 1
+        },
+        {
+          "id": 168,
+          "type": "object",
+          "name": "object_14_copy_copy_copy_copy_copy_copy_copy",
+          "x": 1148,
+          "y": 340,
+          "w": 128,
+          "h": 192,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": -1,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        },
+        {
+          "id": 169,
+          "type": "object",
+          "name": "object_14_copy_copy_copy_copy_copy_copy_copy",
+          "x": 892,
+          "y": 340,
+          "w": 128,
+          "h": 192,
+          "color": "#33aaff",
+          "opacity": 0.7,
+          "z": -1,
+          "texture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAwCAYAAABwrHhvAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVRYhe3XwQnAMAwDwLTk3Qzj/YdKFkiGUKEUTn/B4YfAV1XtFmQ8I6m3O2q/EAAAAACAnm75XDPqf34BAAAAAICebrm/AAAAAOD3AH8BAAAAAMAB6AALKlk7cF0AAAAASUVORK5CYII="
+        }
+      ]
     },
     {
       "id": 3,
@@ -1243,7 +1428,7 @@
           "x": 296,
           "y": 200,
           "w": 128,
-          "h": 144,
+          "h": 108,
           "color": "#ff3333",
           "opacity": 0.3,
           "z": 10,
@@ -1437,9 +1622,9 @@
           "type": "object",
           "name": "object_152",
           "x": 680,
-          "y": 108,
+          "y": 100,
           "w": 64,
-          "h": 64,
+          "h": 76,
           "color": "#33aaff",
           "opacity": 0.7,
           "z": 0,
@@ -1494,8 +1679,8 @@
           "opacity": 1,
           "z": 1,
           "texture": null,
-          "keyTag": "DELTA UBER MEGA XECY KEY",
-          "pickupText": "DELTA UBER MEGA XECY KEY"
+          "keyTag": "Яйцо",
+          "pickupText": "Яйцо"
         },
         {
           "id": 144,
@@ -1506,11 +1691,11 @@
           "w": 106,
           "h": 42,
           "color": "#f900ff",
-          "opacity": 0.1,
+          "opacity": 0,
           "z": 1,
           "texture": null,
           "lockType": "normal",
-          "requiredKeyTag": "DELTA UBER MEGA XECY KEY",
+          "requiredKeyTag": "Яйцо",
           "requiredCount": 1,
           "unlockText": "Открыто!",
           "lockedText": "Заперто."
@@ -1569,6 +1754,15 @@
           "targetSceneId": 1
         }
       ]
+    },
+    {
+      "id": 6,
+      "name": "темнота",
+      "spawnPoint": {
+        "x": 672,
+        "y": 380
+      },
+      "objects": []
     }
   ]
 }
