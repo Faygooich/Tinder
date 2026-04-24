@@ -660,7 +660,6 @@ function drawObj(obj, selected) {
       ctx.fillText(icon+' '+tag+(cnt>1?'×'+cnt:''), sx+3, sy+11);
       ctx.globalAlpha=1;
     }
-  }
 
   } else if (obj.type === 'arrival') {
     const dispAlpha = Math.max(alpha, 0.18);
@@ -680,6 +679,8 @@ function drawObj(obj, selected) {
       ctx.globalAlpha=1;
     }
   }
+
+  if (selected) {
     ctx.strokeStyle='#c8ff00'; ctx.lineWidth=1;
     ctx.strokeRect(sx-1,sy-1,sw+2,sh+2);
     for (const h of getHandles(obj)) {
