@@ -78,11 +78,24 @@
       background:rgba(0,0,0,0.65); padding:3px 8px;
       border:1px solid rgba(255,255,255,0.22);
     }
+	#hint {
+	  position: fixed;
+	  bottom: 18px;
+	  right: 22px;
+	  font-size: 12px;
+	  opacity: .3;
+	  pointer-events: none;
+	  animation: bh 1.4s ease-in-out infinite;
+	}
+
+	@keyframes bh {
+	  50% { opacity: .06; }
+	}
   </style>
 </head>
 <body>
   <audio id="bg-audio" src="nihil.flac" loop preload="auto"></audio>
-
+  
   <div id="login-screen">
     <label for="code-input">код</label>
     <input type="text" id="code-input" maxlength="4" autocomplete="off" autofocus>
@@ -106,8 +119,11 @@
     <!-- KEY HUD -->
     <div id="key-hud"></div>
   </div>
-
+  
+  <div id="hint">:^0</div>
+  
   <script>
+
   /* ─────────────────────────────────────
      CONSTANTS
   ───────────────────────────────────── */
